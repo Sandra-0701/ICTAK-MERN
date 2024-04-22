@@ -7,6 +7,7 @@ import Testimonial from './Pages/Testimonial'
 import Contact from './Pages/Contact'
 import Login from './Pages/Login'
 import AdminDashboard from './Admin/AdminDashboard'
+import MentorDashboard from './Mentor/MentorDashboard'
 
 const App = () => {
   return (
@@ -22,6 +23,9 @@ const App = () => {
         
         {/* Admin */}
         <Route path='/admin' element={<AdminDashboard/>} />
+
+        {/* Mentor */}
+        <Route path='/mentor' element={<MentorDashboard/>} />
 
       </Routes>
 
