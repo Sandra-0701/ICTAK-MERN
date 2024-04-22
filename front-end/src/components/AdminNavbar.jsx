@@ -11,7 +11,7 @@ const AdminNavbar = () => {
 >
   <h2 className="m-0 text-primary">
     <i className="fa fa-book me-3" />
-    ICTAK-Internship Portal
+    ADMIN-Dashboard
   </h2>
 </a>
 <button
@@ -25,14 +25,14 @@ const AdminNavbar = () => {
 <div className="collapse navbar-collapse" id="navbarCollapse">
   <div className="navbar-nav ms-auto p-4 p-lg-0">
     <a href="/" className="nav-item nav-link active">
-      Home
+      Mentor Form
     </a>
     <a href="/about" className="nav-item nav-link">
-      About
+      Projects
     </a>
-    <a href="/courses" className="nav-item nav-link">
+    {/* <a href="/courses" className="nav-item nav-link">
       Courses
-    </a>
+    </a> */}
     {/* <div className="nav-item dropdown">
       <a
         href="#"
@@ -54,11 +54,11 @@ const AdminNavbar = () => {
       </div>
     </div> */}
     <a href="/contact" className="nav-item nav-link">
-      Contact
+      My Profile
     </a>
   </div>
   <a href="/login" className="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
-    Login
+    Logout
     <i className="fa fa-arrow-right ms-3" />
   </a>
 </div>
