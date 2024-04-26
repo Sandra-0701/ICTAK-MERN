@@ -8,6 +8,8 @@ import Contact from './Pages/Contact'
 import Login from './Pages/Login'
 import AdminDashboard from './Admin/AdminDashboard'
 import MentorDashboard from './Mentor/MentorDashboard'
+import AddMentor from './Admin/AddMentor'
+import MentorsList from './Admin/MentorsList'
 
 const App = () => {
   return (
@@ -23,6 +25,10 @@ const App = () => {
         
         {/* Admin */}
         <Route path='/admin' element={<AdminDashboard/>} />
+        <Route path='/addmentor' element={<AddMentor/>} />
+        <Route path='/mentors' element={<MentorsList/>} />
+        
+
 
         {/* Mentor */}
         <Route path='/mentor' element={<MentorDashboard/>} />
