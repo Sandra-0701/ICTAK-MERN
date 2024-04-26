@@ -57,7 +57,7 @@ const AdminNavbar = () => {
         </a>
       </div>
     </div> */}
-    <a href="/contact" className="nav-item nav-link">
+    <a href="/admin" className="nav-item nav-link">
       My Profile
     </a>
   </div>
