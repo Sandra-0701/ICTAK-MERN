@@ -5,16 +5,12 @@ import Grid from '@mui/material/Grid';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const AdminForm = ({ method, data }) => {
+const AdminForm = (props) => {
   const navigate = useNavigate();
 
-  const [mentor, setMentor] = useState({
-    Name: '',
-    Email: '',
-    PhoneNumber: '',
-    Password: '',
-    ProjectTopic: '',
-  });
+  const [mentor, setMentor] = useState(props.data);
+  console.log("props.data", props.data);
+  console.log("props.method", props.method);
 
   const [alertMessages, setAlertMessages] = useState({
     Name: '',
@@ -60,7 +56,7 @@ const AdminForm = ({ method, data }) => {
       return;
     }
 
-    if (method === "post") {
+    if (props.method === "post") {
       axios
         .post('http://localhost:5000/api/addmentor', mentor)
         .then((res) => {
@@ -70,7 +66,7 @@ const AdminForm = ({ method, data }) => {
         .catch((err) => {
           console.log(err);
         });
-    } else if (method === "put") {
+    } else if (props.method === "put") {
       axios
         .put("http://localhost:5000/api/mentors/" + mentor._id, mentor)
         .then((res) => {
@@ -86,7 +82,7 @@ const AdminForm = ({ method, data }) => {
   return (
     <div style={{ marginLeft: '35%' }}>
       <Typography variant="h4" gutterBottom>
-        {method === 'post' ? 'Add Mentor' : 'Update Mentor'}
+        {props.method === 'post' ? 'Add Mentor' : 'Update Mentor'}
       </Typography>
       <br />
       <form>
@@ -161,7 +157,8 @@ const AdminForm = ({ method, data }) => {
               style={{ width: '500px', height: '45px' }}
               onClick={addPost}
             >
-              {method === 'post' ? 'Add' : 'Update'}
+              {/* {method === 'post' ? 'Add' : 'Update'} */}
+              SUBMIT
             </Button>
           </Grid>
         </Grid>

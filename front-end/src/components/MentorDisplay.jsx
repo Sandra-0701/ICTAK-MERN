@@ -13,7 +13,7 @@ import AdminForm from "./AdminForm";
 const MentorDisplay = () => {
   const [mentor, setMentor] = useState([]);
   const [up, setUp] = useState(false);
-  const [singleVal, setSingleVal] = useState({});
+  const [singleVal, setSingleVal] = useState([]);
 
   //get employees
 
@@ -132,8 +132,10 @@ const MentorDisplay = () => {
     </div>
   );
 
-  if (up) FinalJSX = <AdminForm method="put" data={singleVal} />;
-  return FinalJSX;
+  if (up) FinalJSX = <AdminForm method="put" data={singleVal} />
+  return (
+    FinalJSX
+  );
 };
 
 export default MentorDisplay;
