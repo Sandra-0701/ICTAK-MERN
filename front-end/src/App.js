@@ -11,6 +11,8 @@ import MentorDashboard from './Mentor/MentorDashboard'
 import AddMentor from './Admin/AddMentor'
 import MentorsList from './Admin/MentorsList'
 import Projects from './Admin/Projects'
+import ReferenceMaterial from './Mentor/ReferenceMaterial'
+import AdminProfile from './Admin/AdminProfile'
 
 
 
@@ -31,12 +33,14 @@ const App = () => {
         <Route path='/addmentor' element={<AddMentor/>} />
         <Route path='/mentors' element={<MentorsList/>} />
         <Route path='/projects' element={<Projects/>} />
+        <Route path='/profile' element={<AdminProfile/>} />
         
         
 
 
         {/* Mentor */}
         <Route path='/mentor' element={<MentorDashboard/>} />
+        <Route path='/reference-material' element={<ReferenceMaterial/>} />
 
       </Routes>
 

@@ -12,7 +12,7 @@ const MentorNavbar = () => {
     >
       <h2 className="m-0 text-primary">
         <i className="fa fa-book me-3" />
-        ICTAK-Internship Portal
+        ICTAK-Mentor Dashboard
       </h2>
     </a>
     <button
@@ -31,8 +31,8 @@ const MentorNavbar = () => {
         <a href="/about" className="nav-item nav-link">
           Projects
         </a>
-        <a href="/courses" className="nav-item nav-link">
-          Referance
+        <a href="/reference-material" className="nav-item nav-link">
+          Referance Material
         </a>
         {/* <div className="nav-item dropdown">
           <a

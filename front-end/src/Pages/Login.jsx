@@ -2,33 +2,43 @@ import React, { useState } from 'react';
 import Spinner from '../components/Spinner';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const Login = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
-
+    setLoading(true);
     try {
-      const response = await axios.post('/login', {
-        email,
-        password
-      });
-      console.log(response.data); // handle response as needed
+      const response = await axios.post('http://localhost:5000/api/auth/login', { Email: email, Password: password });
+      setLoading(false);
+      const { success, role, adminId, mentorId, message } = response.data;
+      if (success) {
+        if (role === 'Admin') {
+          navigate('/admin');
+        } else if (role === 'Mentor') {
+          navigate(`/mentor/${mentorId}`);
+        } else {
+          setError('Invalid role');
+        }
+      } else {
+        setError(message);
+      }
     } catch (error) {
-      console.error('Login failed:', error);
-    } finally {
-      setIsLoading(false);
+      setLoading(false);
+      setError('Error logging in');
     }
   };
 
   return (
     <>
-      {isLoading && <Spinner />}
+      <Spinner />
       <Navbar />
       {/* Header Start */}
       <div className="container-fluid bg-primary py-5 mb-5 page-header">
@@ -57,30 +67,17 @@ const Login = () => {
         <div className="container">
           <div className="row g-4 justify-content-center">
             <div className="col-lg-6 col-md-8">
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleLogin}>
                 <div className="form-floating mb-4">
-                  <input
-                    type="email"
-                    className="form-control"
-                    id="email"
-                    placeholder="name@example.com"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
+                  <input type="email" className="form-control" id="email" placeholder="name@example.com" value={email} onChange={(e) => setEmail(e.target.value)} />
                   <label htmlFor="email">Email address</label>
                 </div>
                 <div className="form-floating mb-4">
-                  <input
-                    type="password"
-                    className="form-control"
-                    id="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
+                  <input type="password" className="form-control" id="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
                   <label htmlFor="password">Password</label>
                 </div>
-                <button type="submit" className="btn btn-primary w-100 py-3">Log in</button>
+                <button type="submit" className="btn btn-primary w-100 py-3" disabled={loading}>{loading ? 'Logging in...' : 'Log in'}</button>
+                {error && <p className="text-danger mt-2">{error}</p>}
               </form>
             </div>
           </div>
@@ -88,7 +85,7 @@ const Login = () => {
       </div>
       {/* Login End */}
 
-      <Footer />
+      <Footer/>
     </>
   );
 };
