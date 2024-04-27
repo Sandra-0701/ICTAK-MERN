@@ -31,10 +31,10 @@ const AdminNavbar = () => {
     ">
       Mentors
     </a>
-    <a href="/about" className="nav-item nav-link">
+    <a href="/projects" className="nav-item nav-link">
       Projects
     </a>
-    {/* <a href="/courses" className="nav-item nav-link">
+    {/* <a href="/projects" className="nav-item nav-link">
       Courses
     </a> */}
     {/* <div className="nav-item dropdown">
@@ -43,20 +43,21 @@ const AdminNavbar = () => {
         className="nav-link dropdown-toggle"
         data-bs-toggle="dropdown"
       >
-        Pages
+        Projects
       </a>
       <div className="dropdown-menu fade-down m-0">
-        <a href="team.html" className="dropdown-item">
-          Our Team
+        <a href="/project-add" className="dropdown-item">
+          Projects Add
         </a>
-        <a href="testimonial.html" className="dropdown-item">
-          Testimonial
+        <a href="/project-list" className="dropdown-item">
+          Project List
         </a>
         <a href="404.html" className="dropdown-item">
           404 Page
         </a>
       </div>
     </div> */}
+
     <a href="/contact" className="nav-item nav-link">
       My Profile
     </a>

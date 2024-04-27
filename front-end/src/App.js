@@ -10,6 +10,9 @@ import AdminDashboard from './Admin/AdminDashboard'
 import MentorDashboard from './Mentor/MentorDashboard'
 import AddMentor from './Admin/AddMentor'
 import MentorsList from './Admin/MentorsList'
+import Projects from './Admin/Projects'
+
+
 
 const App = () => {
   return (
@@ -27,6 +30,8 @@ const App = () => {
         <Route path='/admin' element={<AdminDashboard/>} />
         <Route path='/addmentor' element={<AddMentor/>} />
         <Route path='/mentors' element={<MentorsList/>} />
+        <Route path='/projects' element={<Projects/>} />
+        
         
 
 

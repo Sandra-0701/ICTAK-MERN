@@ -2,7 +2,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
-
+const projectRoutes = require('./routes/projectRoutes');
 
 require('dotenv').config()
 const PORT = process.env.PORT;
@@ -14,7 +14,7 @@ const app = express();
 app.use(morgan('dev'));
 app.use(cors());
 app.use('/api', mentorRoute);
-
+app.use('/api/project', projectRoutes);
 
 
 //listen
