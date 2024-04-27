@@ -24,6 +24,9 @@ const AdminNavbar = () => {
 </button>
 <div className="collapse navbar-collapse" id="navbarCollapse">
   <div className="navbar-nav ms-auto p-4 p-lg-0">
+  <a href="/admin" className="nav-item nav-link ">
+      Home
+    </a>
     <a href="/addmentor" className="nav-item nav-link ">
       Mentor Form
     </a>
@@ -58,7 +61,7 @@ const AdminNavbar = () => {
       </div>
     </div> */}
 
-    <a href="/contact" className="nav-item nav-link">
+    <a href="/profile" className="nav-item nav-link">
       My Profile
     </a>
   </div>
