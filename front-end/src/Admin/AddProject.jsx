@@ -17,8 +17,8 @@ const AddProject = ({ addTopic }) => {
   const handleSubmit = () => {
     axiosInstance.post('/api/project/topics', { topic })
       .then((res) => {
-        addTopic(res.data); // Add the newly created topic to the list
-        setOpen(false); // Close the dialog
+        addTopic(res.data); 
+        setOpen(false); 
       })
       .catch((error) => {
         console.error('Error adding project topic:', error);

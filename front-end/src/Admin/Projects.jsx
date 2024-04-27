@@ -27,7 +27,7 @@ const Projects = () => {
     axiosInstance.delete(`/api/project/topics/${id}`)
       .then(() => {
         alert('Project topic deleted successfully');
-        fetchData(); // Fetch updated topics after deletion
+        fetchData();
       })
       .catch((error) => {
         console.error('Error deleting project topic:', error);
@@ -48,15 +48,15 @@ const Projects = () => {
     try {
       await axiosInstance.put(`/api/project/topics/${editId}`, { topic: editedTopic });
       alert('Project topic updated successfully');
-      fetchData(); // Fetch updated topics after editing
-      cancelEdit(); // Exit edit mode
+      fetchData(); 
+      cancelEdit(); 
     } catch (error) {
       console.error('Error updating project topic:', error);
     }
   };
 
   const addTopic = (newTopic) => {
-    setTopics([...topics, newTopic]); // Update state with the new topic
+    setTopics([...topics, newTopic]); 
   };
 
   return (
