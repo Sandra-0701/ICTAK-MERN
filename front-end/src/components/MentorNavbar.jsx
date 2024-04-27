@@ -12,7 +12,7 @@ const MentorNavbar = () => {
     >
       <h2 className="m-0 text-primary">
         <i className="fa fa-book me-3" />
-        ICTAK-Internship Portal
+        ICTAK-Mentor Dashboard
       </h2>
     </a>
     <button
