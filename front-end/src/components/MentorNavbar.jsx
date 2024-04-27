@@ -31,8 +31,8 @@ const MentorNavbar = () => {
         <a href="/about" className="nav-item nav-link">
           Projects
         </a>
-        <a href="/courses" className="nav-item nav-link">
-          Referance
+        <a href="/reference-material" className="nav-item nav-link">
+          Referance Material
         </a>
         {/* <div className="nav-item dropdown">
           <a
