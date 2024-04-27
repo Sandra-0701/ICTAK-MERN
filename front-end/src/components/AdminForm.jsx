@@ -36,7 +36,7 @@ const AdminForm = (props) => {
       newAlertMessages.Email = 'Email is required';
     }
 
-    if (!mentor.PhoneNumber || !/^\+?\d{0,13}$/.test(mentor.PhoneNumber)) {
+    if (!mentor.PhoneNumber || !/^[0-9]{10}$/.test(mentor.PhoneNumber)) {
       newAlertMessages.PhoneNumber = 'Phone Number is required and should be a valid phone number';
     }
 
