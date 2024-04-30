@@ -146,7 +146,7 @@ const Course = () => {
                   <small>(123)</small>
                 </div>
                 <h5 className="mb-4">
-                  Web Design &amp; Development Course for Beginners
+                Certified Specialist in Full Stack Development (MERN)
                 </h5>
               </div>
               <div className="d-flex border-top">

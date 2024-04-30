@@ -1,28 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { Button, Typography } from "@mui/material";
+import Grid from "@mui/material/Grid";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+import InputLabel from '@mui/material/InputLabel';
 import TextField from '@mui/material/TextField';
-import { Button, Typography } from '@mui/material';
-import Grid from '@mui/material/Grid';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 
 const AdminForm = (props) => {
   const navigate = useNavigate();
 
   const [mentor, setMentor] = useState(props.data);
-  console.log("props.data", props.data);
-  console.log("props.method", props.method);
 
   const [alertMessages, setAlertMessages] = useState({
-    Name: '',
-    Email: '',
-    PhoneNumber: '',
-    Password: '',
-    ProjectTopic: '',
+    Name: "",
+    Email: "",
+    PhoneNumber: "",
+    Password: "",
+    ProjectTopic: "",
   });
 
   const inputHandler = (e) => {
     setMentor({ ...mentor, [e.target.name]: e.target.value });
-    setAlertMessages({ ...alertMessages, [e.target.name]: '' });
+    setAlertMessages({ ...alertMessages, [e.target.name]: "" });
   };
 
   const addPost = () => {
@@ -80,13 +82,12 @@ const AdminForm = (props) => {
   };
 
   return (
-    <div style={{ marginLeft: '35%' }}>
+    <div style={{ margin: "0 auto", width: "50%" ,marginLeft:"35%"}}>
       <Typography variant="h4" gutterBottom>
-        {props.method === 'post' ? 'Add Mentor' : 'Update Mentor'}
+        {props.method === "post" ? "Add Mentor" : "Update Mentor"}
       </Typography>
-      <br />
       <form>
-        <Grid container spacing={2}>
+      <Grid container spacing={2}>
           <Grid item xs={12}>
             <TextField
               label="Name"
@@ -136,28 +137,33 @@ const AdminForm = (props) => {
             />
           </Grid>
           <Grid item xs={12}>
-            <TextField
-              label="Project Topic"
-              variant="outlined"
-              style={{ width: '500px' }}
-              multiline
-              rows={3}
-              name="ProjectTopic"
-              value={mentor.ProjectTopic}
-              onChange={inputHandler}
-              error={!!alertMessages.ProjectTopic}
-              helperText={alertMessages.ProjectTopic}
-            />
+            <FormControl   style={{ width: '500px' }} >
+              <InputLabel id="demo-simple-select-label">Project Topic</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={mentor.ProjectTopic || ""}
+                onChange={inputHandler}
+                name="ProjectTopic"
+                error={!!alertMessages.ProjectTopic}
+                helperText={alertMessages.ProjectTopic}
+              >
+               {props.topics && props.topics.map((topic) => (
+  <MenuItem key={topic._id} value={topic.topic}>
+    {topic.topic}
+  </MenuItem>
+))}
+              </Select>
+            </FormControl>
           </Grid>
           <Grid item xs={12}>
             <Button
               type="button"
               variant="contained"
               color="primary"
-              style={{ width: '500px', height: '45px' }}
+              style={{ width: '500px' }}
               onClick={addPost}
             >
-              {/* {method === 'post' ? 'Add' : 'Update'} */}
               SUBMIT
             </Button>
           </Grid>
