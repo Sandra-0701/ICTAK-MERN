@@ -5,7 +5,7 @@ const Schema = mongoose.Schema({
     Email:String,
     PhoneNumber: Number,
     Password:String,
-    ProjectTopic:String
+    ProjectTopics: [String]
 })
 
 const mentorModel = mongoose.model('mentor', Schema);

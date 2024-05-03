@@ -52,25 +52,25 @@ router.delete('/remove/:id', async (req, res) => {
 //update mentor
 
 router.put('/mentors/:id', async (req, res) => {
-    const { id } = req.params;
-    const { Name, Email, PhoneNumber, Password,ProjectTopic } = req.body;
-  
-    try {
+  const { id } = req.params;
+  const { Name, Email, PhoneNumber, Password, ProjectTopics } = req.body;
+
+  try {
       const updatedMentor = await mentors.findByIdAndUpdate(
-        id,
-        {  Name, Email, PhoneNumber, Password,ProjectTopic  },
-        { new: true }
+          id,
+          { Name, Email, PhoneNumber, Password, ProjectTopics },
+          { new: true }
       );
-  
+
       if (!updatedMentor) {
-        return res.status(404).json({ message: 'Mentor not found' });
+          return res.status(404).json({ message: 'Mentor not found' });
       }
-  
-      res.json({ message: 'Mentor Info updated successfully', mentors: updatedMentor });
-    } catch (error) {
+
+      res.json({ message: 'Mentor Info updated successfully', mentor: updatedMentor });
+  } catch (error) {
       console.error('Error updating mentor:', error);
       res.status(500).json({ message: 'Internal server error' });
-    }
-  });
+  }
+});
 
 module.exports = router;

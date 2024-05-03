@@ -10,10 +10,12 @@ import axios from "axios";
 import { Button, Typography } from "@mui/material";
 import AdminForm from "./AdminForm";
 
+
 const MentorDisplay = () => {
   const [mentor, setMentor] = useState([]);
   const [up, setUp] = useState(false);
   const [singleVal, setSingleVal] = useState([]);
+  const [topics, setTopics] = useState([]);
 
   //get employees
 
@@ -22,7 +24,13 @@ const MentorDisplay = () => {
       console.log(res.data);
       setMentor(res.data);
     });
+
+    axios.get("http://localhost:5000/api/project/topics").then((res) => {
+      console.log(res.data);
+      setTopics(res.data);
+    });
   }, []);
+   
 
   //delete employee
 
@@ -40,17 +48,15 @@ const MentorDisplay = () => {
       });
   };
 
-  // update employee
-
   const updateVal = (item) => {
     console.log(item);
     setUp(true);
-    setSingleVal(item);
+    setSingleVal(item); // Set singleVal state with the mentor data
   };
 
   let FinalJSX = (
     <div>
-      <br></br>
+      <br />
       <Typography
         variant="h4"
         style={{
@@ -63,7 +69,7 @@ const MentorDisplay = () => {
       >
         MENTOR INFO
       </Typography>
-      <br></br>
+      <br />
       <TableContainer component={Paper} style={{ alignContent: "center" }}>
         <Table
           sx={{ minWidth: 650 }}
@@ -107,7 +113,11 @@ const MentorDisplay = () => {
                 <TableCell>{item.Email}</TableCell>
                 <TableCell>{item.PhoneNumber}</TableCell>
                 <TableCell>{item.Password}</TableCell>
-                <TableCell>{item.ProjectTopic}</TableCell>
+                <TableCell>
+                  {item.ProjectTopics.map((topic, index) => (
+                    <div key={index}>{topic}</div>
+                  ))}
+                </TableCell>
                 <TableCell>
                   <Button
                     style={{ backgroundColor: "lightblue", color: "black" }}
@@ -132,10 +142,10 @@ const MentorDisplay = () => {
     </div>
   );
 
-  if (up) FinalJSX = <AdminForm method="put" data={singleVal} />
-  return (
-    FinalJSX
-  );
+  if (up)
+    FinalJSX = <AdminForm method="put" data={singleVal} topics={topics} />;
+
+  return FinalJSX;
 };
 
 export default MentorDisplay;
