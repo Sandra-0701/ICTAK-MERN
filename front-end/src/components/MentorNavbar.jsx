@@ -28,7 +28,7 @@ const MentorNavbar = () => {
         <a href="/" className="nav-item nav-link active">
           Home
         </a>
-        <a href="/about" className="nav-item nav-link">
+        <a href="/projects/${mentorId}" className="nav-item nav-link">
           Projects
         </a>
         <a href="/reference-material" className="nav-item nav-link">

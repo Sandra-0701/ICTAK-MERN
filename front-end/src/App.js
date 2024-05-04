@@ -13,6 +13,7 @@ import MentorsList from './Admin/MentorsList'
 import Projects from './Admin/Projects'
 import ReferenceMaterial from './Mentor/ReferenceMaterial'
 import AdminProfile from './Admin/AdminProfile'
+import ProjectsPage from './Mentor/ProjectsPage'
 
 
 
@@ -32,15 +33,18 @@ const App = () => {
         <Route path='/admin' element={<AdminDashboard/>} />
         <Route path='/addmentor' element={<AddMentor/>} />
         <Route path='/mentors' element={<MentorsList/>} />
-        <Route path='/projects' element={<Projects/>} />
+        <Route path='/project' element={<Projects/>} />
         <Route path='/profile' element={<AdminProfile/>} />
         
         
 
 
         {/* Mentor */}
-        <Route path='/mentor' element={<MentorDashboard/>} />
+        
         <Route path='/reference-material' element={<ReferenceMaterial/>} />
+        <Route path="/mentor/:mentorId" element={<MentorDashboard />} />
+        <Route path='/projects/:mentorId' element={<ProjectsPage />} />
+
 
       </Routes>
 

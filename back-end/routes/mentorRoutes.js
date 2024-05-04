@@ -73,4 +73,19 @@ router.put('/mentors/:id', async (req, res) => {
   }
 });
 
+// Get mentor info by ID
+router.get('/mentors/:id', async (req, res) => {
+  try {
+      const mentorId = req.params.id;
+      const mentor = await mentors.findById(mentorId);
+      if (!mentor) {
+          return res.status(404).json({ message: 'Mentor not found' });
+      }
+      res.status(200).json(mentor);
+  } catch (error) {
+      console.error('Error fetching mentor:', error);
+      res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
 module.exports = router;

@@ -34,7 +34,7 @@ const AdminNavbar = () => {
     ">
       Mentors
     </a>
-    <a href="/projects" className="nav-item nav-link">
+    <a href="/project" className="nav-item nav-link">
       Projects
     </a>
     {/* <a href="/projects" className="nav-item nav-link">
