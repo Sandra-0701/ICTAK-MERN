@@ -25,7 +25,7 @@ const MentorNavbar = () => {
     </button>
     <div className="collapse navbar-collapse" id="navbarCollapse">
       <div className="navbar-nav ms-auto p-4 p-lg-0">
-        <a href="/" className="nav-item nav-link active">
+        <a href="#" className="nav-item nav-link active">
           Home
         </a>
         <a href="/projects/${mentorId}" className="nav-item nav-link">
@@ -54,7 +54,7 @@ const MentorNavbar = () => {
             </a>
           </div>
         </div> */}
-        <a href="/contact" className="nav-item nav-link">
+        <a href="#" className="nav-item nav-link">
           Profile
         </a>
       </div>

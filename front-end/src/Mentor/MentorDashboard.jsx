@@ -3,6 +3,7 @@ import MentorNavbar from '../components/MentorNavbar';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { Card, CardContent, Button } from '@mui/material';
+import { Link } from "react-router-dom";
 
 const MentorDashboard = () => {
     const [mentor, setMentor] = useState(null);
@@ -31,8 +32,8 @@ const MentorDashboard = () => {
                                 <h2>{project}</h2>
                             </CardContent>
                             <div style={{ alignSelf: 'flex-end', marginBottom: '10px' }}>
-                                <Button variant="contained" color="primary">
-                                    View
+                                <Button variant="contained" >
+                                <Link to={'/submissions'}>VIEW</Link>
                                 </Button>
                             </div>
                         </Card>

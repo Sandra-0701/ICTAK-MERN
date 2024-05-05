@@ -14,6 +14,9 @@ import Projects from './Admin/Projects'
 import ReferenceMaterial from './Mentor/ReferenceMaterial'
 import AdminProfile from './Admin/AdminProfile'
 import ProjectsPage from './Mentor/ProjectsPage'
+import AddSubmissions from './Pages/AddSubmissions'
+import SubmissionList from './Mentor/SubmissionList'
+import SubmissionView from './Mentor/SubmissionView'
 
 
 
@@ -28,6 +31,7 @@ const App = () => {
         <Route path='/contact' element={<Contact/>} />
         <Route path='/testimonial' element={<Testimonial/>} />
         <Route path='/login' element={<Login/>} />
+        <Route path='/student' element={<AddSubmissions/>} />
         
         {/* Admin */}
         <Route path='/admin' element={<AdminDashboard/>} />
@@ -44,6 +48,8 @@ const App = () => {
         <Route path='/reference-material' element={<ReferenceMaterial/>} />
         <Route path="/mentor/:mentorId" element={<MentorDashboard />} />
         <Route path='/projects/:mentorId' element={<ProjectsPage />} />
+        <Route path='/submissions' element={<SubmissionList />} />
+        <Route path='/viewsubmissions' element={<SubmissionView />} />
 
 
       </Routes>

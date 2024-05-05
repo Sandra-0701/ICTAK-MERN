@@ -10,6 +10,7 @@ require('dotenv').config()
 const PORT = process.env.PORT;
 require('./DB/connection')
 const mentorRoute = require('./routes/mentorRoutes');
+const studentRoute = require('./routes/studentRoute');
 
 //initialisation
 const app = express();
@@ -20,6 +21,7 @@ app.use('/api/project', projectRoutes);
 app.use('/api/reference-material', referenceMaterialRouter);
 app.use('/api/admin', adminAuthRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/student', studentRoute);
 
 //listen
 app.listen(PORT,()=>{

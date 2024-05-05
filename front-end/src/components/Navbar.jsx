@@ -56,6 +56,9 @@ const Navbar = () => {
         <a href="/contact" className="nav-item nav-link">
           Contact
         </a>
+        <a href="/student" className="nav-item nav-link">
+         Student Submissions
+        </a>
       </div>
       <a href="/login" className="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
         Login
