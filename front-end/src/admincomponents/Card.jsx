@@ -13,7 +13,7 @@ const course = [
     title: "Projects",
     Duration: "2 hours",
     icon: <BiBook />,
-    path: "/projects",
+    path: "/project",
   },
 ];
 
