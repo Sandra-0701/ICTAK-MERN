@@ -5,6 +5,7 @@ import TextField from '@mui/material/TextField';
 import { Container, Grid, Typography, Breadcrumbs, Link, Button, Box } from '@mui/material';
 import Navbar from "../components/Navbar";
 
+
 const AddSubmissions = () => {
   const navigate = useNavigate();
 
@@ -56,43 +57,7 @@ const AddSubmissions = () => {
   return (
 <>
 <Navbar/>
-<div>
-      {/* Header Start */}
-      <Box
-        sx={{
-          bgcolor: 'primary.main',
-          py: 5,
-          mb: 5,
-          '& h1': {
-            fontSize: '3rem',
-            color: 'white',
-            animation: 'slideInDown',
-          },
-        }}
-      >
-        <Container>
-          <Grid container justifyContent="center">
-            <Grid item xs={12} lg={10} textAlign="center">
-              <Typography variant="h1" gutterBottom>
-                About Us
-              </Typography>
-              <Breadcrumbs aria-label="breadcrumb" justifyContent="center">
-                <Link href="#" color="inherit">
-                  Home
-                </Link>
-                <Link href="#" color="inherit">
-                  Pages
-                </Link>
-                <Typography color="textPrimary" aria-current="page">
-                  About
-                </Typography>
-              </Breadcrumbs>
-            </Grid>
-          </Grid>
-        </Container>
-      </Box>
-      {/* Header End */}
-      </div>
+
 <br></br><br></br>
     <div style={{ margin: "0 auto", width: "50%", marginLeft: "35%" }}>
        

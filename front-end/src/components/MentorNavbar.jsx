@@ -17,7 +17,7 @@ const MentorNavbar = () => {
           {/* Navigation Links & Logout Button */}
           <Grid item>
             <Hidden lgUp>
-              <Button color="inherit" component={Link} to="/" className="nav-item nav-link">
+              <Button color="inherit" component={Link} to="/mentor/:id" className="nav-item nav-link">
                 Home
               </Button>
               <Button color="inherit" component={Link} to="/reference-material" className="nav-item nav-link">
@@ -25,7 +25,7 @@ const MentorNavbar = () => {
               </Button>
             </Hidden>
             <Hidden mdDown>
-              <Button color="inherit" component={Link} to="/" className="nav-item nav-link">
+              <Button color="inherit" component={Link} to="/mentor/:id" className="nav-item nav-link">
                 Home
               </Button> 
               <Button color="inherit" component={Link} to="/reference-material" className="nav-item nav-link">

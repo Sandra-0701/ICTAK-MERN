@@ -10,6 +10,7 @@ import AdminProfile from './Admin/AdminProfile';
 import AddSubmissions from './Pages/AddSubmissions';
 import SubmissionList from './Mentor/SubmissionList';
 import SubmissionView from './Mentor/SubmissionView';
+import Projects from './Admin/Projects';
 
 const App = () => {
   return (
@@ -18,11 +19,12 @@ const App = () => {
         {/* Public Routes */}
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/student' element={<AddSubmissions />} />
+        <Route path='/add' element={<AddSubmissions />} />
 
         {/* Protected Routes */}
         <Route path='/admin' element={<AdminProfile />} />
         <Route path='/addmentor' element={<AddMentor />} />
+        <Route path='/project' element={<Projects/>} />
         <Route path='/mentors' element={<MentorsList />} />
         <Route path='/reference-material' element={<ReferenceMaterial />} />
         <Route path='/mentor/:id' element={<MentorDashboard />} />

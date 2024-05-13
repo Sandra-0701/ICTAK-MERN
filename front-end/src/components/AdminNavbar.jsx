@@ -17,7 +17,7 @@ const AdminNavbar = () => {
           {/* Navigation Links & Logout Button */}
           <Grid item>
             <Hidden lgUp>
-              <Button color="inherit" component={Link} to="/profile" className="nav-item nav-link">
+              <Button color="inherit" component={Link} to="/admin" className="nav-item nav-link">
                 Home
               </Button>
               <Button color="inherit" component={Link} to="/addmentor" className="nav-item nav-link">
@@ -29,12 +29,10 @@ const AdminNavbar = () => {
               <Button color="inherit" component={Link} to="/project" className="nav-item nav-link">
                 Projects
               </Button>
-              <Button color="inherit" component={Link} to="/profile" className="nav-item nav-link">
-                My Profile
-              </Button>
+              
             </Hidden>
             <Hidden mdDown>
-              <Button color="inherit" component={Link} to="/profile" className="nav-item nav-link">
+              <Button color="inherit" component={Link} to="/admin" className="nav-item nav-link">
                 Home
               </Button>
               <Button color="inherit" component={Link} to="/addmentor" className="nav-item nav-link">
@@ -46,9 +44,7 @@ const AdminNavbar = () => {
               <Button color="inherit" component={Link} to="/project" className="nav-item nav-link">
                 Projects
               </Button>
-              <Button color="inherit" component={Link} to="/profile" className="nav-item nav-link">
-                My Profile
-              </Button>
+              
               <Button color="inherit" component={Link} to="/login">
                 Logout
                 <i className="fa fa-arrow-right ms-3" />
