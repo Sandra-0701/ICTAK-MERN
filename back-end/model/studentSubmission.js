@@ -5,7 +5,10 @@ const studentSchema = new mongoose.Schema({
   Batch: String,
   Email: String,
   SubmissionLink: String,
-  EvaluationStatus: { type: String, enum: ['completed', 'pending'], default: 'pending' }
+  EvaluationStatus: { type: String, enum: ['completed', 'pending'], default: 'pending' },
+  Marks: { type: Number, default: null },
+  Comments: { type: String, default: null }
+
 });
 
 const Student = mongoose.model('Submission', studentSchema);

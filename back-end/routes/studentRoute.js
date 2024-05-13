@@ -13,6 +13,23 @@ router.get('/submissions', async (req, res) => {
   }
 });
 
+// Get submissions info by ID
+router.get('/submissions/:id', async (req, res) => {
+  try {
+      const studentId = req.params.id;
+      const student = await Student.findById(studentId);
+      if (!student) {
+          return res.status(404).json({ message: 'Mentor not found' });
+      }
+      res.status(200).json(student);
+  } catch (error) {
+      console.error('Error fetching mentor:', error);
+      res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+module.exports = router;
+
 // Add a new student
 
 
@@ -34,19 +51,71 @@ router.post('/newsubmission', async (req, res) => {
   }
 });
 
-// Update evaluation status
-router.patch('evaluate/:id', async (req, res) => {
+//delete submission
+
+router.delete('/removesubmission/:id', async (req, res) => {
   try {
-    const student = await Student.findById(req.params.id);
-    if (student == null) {
-      return res.status(404).json({ message: 'Student not found' });
-    }
-    student.evaluationStatus = req.body.evaluationStatus;
-    const updatedStudent = await student.save();
-    res.json(updatedStudent);
-  } catch (err) {
-    res.status(400).json({ message: err.message });
+      const deletedSubmission = await Student.findByIdAndDelete(req.params.id);
+      if (!deletedSubmission) {
+          return res.status(404).json({ error: "Submission not found" });
+      }
+      res.json({ message: "Submission deleted successfully" });
+  } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: "Internal server error" });
   }
 });
+
+// POST route to update marks and comments for a student
+router.post('/evaluation/:id', async (req, res) => {
+  const { id } = req.params;
+  const { Marks, Comments } = req.body;
+
+  try {
+    const student = await Student.findByIdAndUpdate(id, { Marks: Marks, Comments: Comments, EvaluationStatus: 'completed' }, { new: true });
+
+    if (!student) {
+      return res.status(404).json({ message: 'Student not found' });
+    }
+
+    res.status(200).json({ message: 'Marks, comments, and evaluation status updated successfully' });
+  } catch (error) {
+    console.error('Error updating student:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+
+//Edit marks and comments
+
+router.put('/editmarks/:id', async (req, res) => {
+  const { id } = req.params;
+  const {Marks, Comments } = req.body;
+
+  try {
+      const updatedEvaluation = await Student.findByIdAndUpdate(
+          id,
+          { Marks, Comments },
+          { new: true }
+      );
+
+      if (!updatedEvaluation) {
+          return res.status(404).json({ message: 'student not found' });
+      }
+
+      res.json({ message: 'Marks and Comments updated successfully', student: updatedEvaluation });
+  } catch (error) {
+      console.error('Error updating marks and comments:', error);
+      res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+
+
+
+
+
+
+
 
 module.exports = router;

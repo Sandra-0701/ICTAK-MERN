@@ -1,74 +1,89 @@
-import React from 'react'
-
+import React from 'react';
+import { AppBar, Toolbar, Typography, Box, Button, Grid, Hidden, IconButton, Menu, MenuItem } from '@mui/material';
+import { Link } from 'react-router-dom'; 
+import MenuIcon from '@mui/icons-material/Menu';
+import Logo from '../images/course.png'
 const Navbar = () => {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleMenu = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <div>
-        {/* Navbar Start */}
-  <nav className="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-    <a
-      href="/"
-      className="navbar-brand d-flex align-items-center px-4 px-lg-5"
-    >
-      <h2 className="m-0 text-primary">
-        <i className="fa fa-book me-3" />
-        ICTAK-Internship Portal
-      </h2>
-    </a>
-    <button
-      type="button"
-      className="navbar-toggler me-4"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarCollapse"
-    >
-      <span className="navbar-toggler-icon" />
-    </button>
-    <div className="collapse navbar-collapse" id="navbarCollapse">
-      <div className="navbar-nav ms-auto p-4 p-lg-0">
-        <a href="/" className="nav-item nav-link active">
-          Home
-        </a>
-        <a href="/about" className="nav-item nav-link">
-          About
-        </a>
-        <a href="/courses" className="nav-item nav-link">
-          Courses
-        </a>
-        {/* <div className="nav-item dropdown">
-          <a
-            href="#"
-            className="nav-link dropdown-toggle"
-            data-bs-toggle="dropdown"
-          >
-            Pages
-          </a>
-          <div className="dropdown-menu fade-down m-0">
-            <a href="team.html" className="dropdown-item">
-              Our Team
-            </a>
-            <a href="testimonial.html" className="dropdown-item">
-              Testimonial
-            </a>
-            <a href="404.html" className="dropdown-item">
-              404 Page
-            </a>
-          </div>
-        </div> */}
-        <a href="/contact" className="nav-item nav-link">
-          Contact
-        </a>
-        <a href="/student" className="nav-item nav-link">
-         Student Submissions
-        </a>
-      </div>
-      <a href="/login" className="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
-        Login
-        <i className="fa fa-arrow-right ms-3" />
-      </a>
+      <AppBar position="static" style={{ backgroundColor: '#90CAF9' }}>
+        <Toolbar>
+          <Grid container justifyContent="space-between" alignItems="center">
+            {/* Logo */}
+            <Grid item>
+              <Link to="/">
+                <img src={Logo} alt="Logo" style={{ height: 40, width: 'auto' }} />
+              </Link>
+            </Grid>
+            {/* App Name */}
+            <Grid item>
+              <Typography variant="h6" component="div" style={{ color: 'white' }}>
+                ICTAK INTERNSHIP PORTAL
+              </Typography>
+            </Grid>
+            {/* Menu Button and Navigation Links (All Screens) */}
+            <Grid item>
+              <Box sx={{ display: 'flex' }}>
+                <Hidden smUp>
+                  <IconButton
+                    size="large"
+                    aria-label="account of current user"
+                    aria-controls={anchorEl ? 'menu-basic' : undefined}
+                    aria-haspopup="true"
+                    onClick={handleMenu}
+                    color="inherit"
+                  >
+                    <MenuIcon />
+                  </IconButton>
+                  <Menu
+                    id="menu-basic"
+                    anchorEl={anchorEl}
+                    open={Boolean(anchorEl)}
+                    onClose={handleClose}
+                    MenuListProps={{
+                      'aria-labelledby': 'menu-basic',
+                    }}
+                  >
+                    <MenuItem onClick={handleClose} component={Link} to="/" closeMenu={handleClose}>
+                      Home
+                    </MenuItem>
+                    <MenuItem onClick={handleClose} component={Link} to="/add" closeMenu={handleClose}>
+                      Student Submissions
+                    </MenuItem>
+                    <MenuItem onClick={handleClose} component={Link} to="/login" closeMenu={handleClose}>
+                      Login
+                    </MenuItem>
+                  </Menu>
+                </Hidden>
+                <Hidden xsDown>
+                  {/* Navigation Links displayed on Non-XS screens */}
+                  <Button color="inherit" component={Link} to="/" sx={{ fontSize: '14px' }}>
+                    Home
+                  </Button>
+                  <Button color="inherit" component={Link} to="/add" sx={{ fontSize: '14px' }}>
+                    Student Submissions
+                  </Button>
+                  <Button color="inherit" component={Link} to="/login" sx={{ fontSize: '14px' }}>
+                    Login
+                  </Button>
+                </Hidden>
+              </Box>
+            </Grid>
+          </Grid>
+        </Toolbar>
+      </AppBar>
     </div>
-  </nav>
-  {/* Navbar End */}
-    </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

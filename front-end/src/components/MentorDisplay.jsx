@@ -91,9 +91,7 @@ const MentorDisplay = () => {
               <TableCell style={{ backgroundColor: "lightblue" }}>
                 Phone Number
               </TableCell>
-              <TableCell style={{ backgroundColor: "lightblue" }}>
-                Password
-              </TableCell>
+              
               <TableCell style={{ backgroundColor: "lightblue" }}>
                 Project Topic
               </TableCell>
@@ -112,7 +110,6 @@ const MentorDisplay = () => {
                 <TableCell>{item.Name}</TableCell>
                 <TableCell>{item.Email}</TableCell>
                 <TableCell>{item.PhoneNumber}</TableCell>
-                <TableCell>{item.Password}</TableCell>
                 <TableCell>
                   {item.ProjectTopics.map((topic, index) => (
                     <div key={index}>{topic}</div>
