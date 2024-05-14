@@ -115,17 +115,31 @@ const AddSubmissions = () => {
         style={{
           margin: "0 auto",
           width: "50%",
-          border: "1px solid #ccc",
-          borderRadius: "5px",
-          padding: "20px",
+          // border: "1px solid #ccc",
+          // borderRadius: "5px",
+          // padding: "20px",
+          backgroundColor: '#f5f5f5',
+          borderRadius: '8px',
+          padding: '32px',
+          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
         }}
       >
-        <Typography variant="h4" gutterBottom>
-          Add Student Submission
+         {/* <Box
+                sx={{
+                  backgroundColor: '#f5f5f5',
+                  borderRadius: '8px',
+                  padding: '32px',
+                  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+                }}
+              > */}
+        <Typography variant="h4" gutterBottom style={{  color: 'black', height: '50px', borderRadius: '5px', paddingTop: '5px', textAlign:"center" }} >
+          ADD STUDENT SUBMISSION
         </Typography>
+        <br></br>
         <form>
           <Grid container spacing={2}>
             <Grid item xs={12}>
+           
               <TextField
                 label="Name"
                 variant="outlined"
@@ -191,9 +205,11 @@ const AddSubmissions = () => {
               >
                 SUBMIT
               </Button>
+             
             </Grid>
           </Grid>
         </form>
+     
       </div>
     </>
   );
