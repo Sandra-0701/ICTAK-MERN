@@ -67,7 +67,7 @@ const Projects = () => {
         <Grid container spacing={2}>
           {topics.map((topic) => (
             <Grid item xs={12} sm={6} md={4} key={topic._id}>
-              <Card sx={{ minWidth: 275 }}>
+              <Card sx={{ minWidth: 275 }} style={{backgroundColor:"#f5f5f5"}} >
                 <CardContent>
                   {editId === topic._id ? (
                     <TextField

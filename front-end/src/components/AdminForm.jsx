@@ -56,8 +56,8 @@ const AdminForm = (props) => {
   
     if (!mentor.Password.trim()) {
       newAlertMessages.Password = 'Password is required';
-    } else if (mentor.Password.trim().length < 5) {
-      newAlertMessages.Password = 'Password should be at least 5 characters long';
+    } else if (mentor.Password.trim().length < 8) {
+      newAlertMessages.Password = 'Password should be at least 8 characters long';
     }
   
     if (!mentor.ProjectTopics || mentor.ProjectTopics.length === 0) {
@@ -93,10 +93,14 @@ const AdminForm = (props) => {
     }
   };
   return (
-    <div style={{ margin: "0 auto", width: "50%" ,marginLeft:"35%"}}>
-    <Typography variant="h4" gutterBottom>
-      {props.method === "post" ? "Add Mentor" : "Update Mentor"}
+    <div style={{ margin: "0 auto", width: "34%" ,marginLeft:"30%", backgroundColor: '#f5f5f5',
+    borderRadius: '8px',
+    padding: '32px',
+    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',}}>
+    <Typography variant="h4" gutterBottom style={{  color: 'black', height: '50px', borderRadius: '5px', paddingTop: '5px', textAlign:"center" }} >
+      {props.method === "post" ? "ADD MENTOR" : "UPDATE MENTOR"}
     </Typography>
+
     <form>
     <Grid container spacing={2}>
         <Grid item xs={12}>

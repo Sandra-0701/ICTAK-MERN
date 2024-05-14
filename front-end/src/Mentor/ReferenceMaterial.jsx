@@ -44,7 +44,7 @@ const ReferenceMaterial = () => {
         <Grid container spacing={2}>
           {materials.map((material) => (
             <Grid item xs={12} sm={6} md={4} key={material._id}>
-              <Card sx={{ minWidth: 275 }}>
+              <Card sx={{ minWidth: 275 }} style={{backgroundColor:"#f5f5f5"}} >
                 <CardContent>
                   <Typography variant='h5' component='div'>
                     {material.title}

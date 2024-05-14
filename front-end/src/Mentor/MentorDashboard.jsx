@@ -53,7 +53,7 @@ const MentorDashboard = () => {
             style={{
               padding: "10px",
               border: "1px solid #e3e3cf",
-              borderRadius: "20px",
+              borderRadius: "5px",
               backgroundColor: "#e3e3cf",
               marginBottom: "20px",
             }}
@@ -150,6 +150,7 @@ const MentorDashboard = () => {
                     display: "flex",
                     flexDirection: "column",
                     height: "100%",
+                    backgroundColor:"#f5f5f5"
                   }}
                 >
                   <CardContent style={{ flex: "1 0 auto" }}>
