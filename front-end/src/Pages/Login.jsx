@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { AuthContext } from '../AuthContext';
 import { Container, Grid, Typography, TextField, Button, CircularProgress, InputAdornment, Box } from '@mui/material';
 import Navbar from '../components/Navbar';
 import { useNavigate } from 'react-router-dom';
@@ -15,6 +16,7 @@ const Login = () => {
   const [error, setError] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  const { login } = useContext(AuthContext);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -48,8 +50,10 @@ const Login = () => {
       console.log(response.data);
       if (success) {
         if (role === 'Admin') {
+          login('admin'); // Call the login function with the 'admin' role
           navigate('/admin');
         } else if (role === 'Mentor') {
+          login('mentor'); // Call the login function with the 'mentor' role
           navigate(`/mentor/${userId}`);
         } else {
           setError('Invalid role');

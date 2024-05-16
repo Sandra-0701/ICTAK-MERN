@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { AppBar, Toolbar, Typography, Button, Grid, Hidden } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../AuthContext';
 
 const AdminNavbar = () => {
+  const { logout } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  };
+
   return (
     <AppBar position="sticky" style={{ backgroundColor: '#06BBCC' }}>
       <Toolbar>
@@ -45,7 +54,7 @@ const AdminNavbar = () => {
                 Projects
               </Button>
               
-              <Button color="inherit" component={Link} to="/login">
+              <Button color="inherit" component={Link} onClick={handleLogout} to="/login">
                 Logout
                 <i className="fa fa-arrow-right ms-3" />
               </Button>
