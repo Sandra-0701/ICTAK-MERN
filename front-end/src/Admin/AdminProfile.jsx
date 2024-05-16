@@ -1,23 +1,23 @@
-import React from 'react'
+import React from 'react';
 import AdminNavbar from '../components/AdminNavbar';
-import Sidebar from '../admincomponents/Sidebar';
 import Content from '../admincomponents/Content';
-import MyProfile from '../admincomponents/MyProfile';
-
+import '../style/AdminProfile.css';
+import Footer from '../components/Footer'
 
 const AdminProfile = () => {
   return (
-   <div>
-   <AdminNavbar/>
-    <div className='dashboard'>
-      <Sidebar/>
-     <div className='dashboard--content'>
-      <Content/>
-      <MyProfile/>
-     </div>
+    <>
+    <div className="admin-profile-container">
+      <AdminNavbar />
+      <div className="dashboard">
+        <div className="dashboard-content">
+          <Content />
+        </div>
+      </div>
     </div>
-    </div>
-  )
-}
+    <Footer/>
+    </>
+  );
+};
 
-export default AdminProfile
+export default AdminProfile;

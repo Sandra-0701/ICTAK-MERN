@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom"; // Import useNavigate
-import axios from "axios";
 import MentorNavbar from "../components/MentorNavbar";
 import { Button, Typography, TextField, MenuItem } from "@mui/material";
 import Table from "@mui/material/Table";
@@ -8,6 +7,7 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import axiosInstance from "../axiosInterceptor";
 
 const SubmissionView = () => {
   const [student, setStudent] = useState(null);
@@ -20,8 +20,8 @@ const SubmissionView = () => {
   const navigate = useNavigate(); // Initialize useNavigate
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:5000/api/student/submissions/${studentId}`)
+    axiosInstance
+      .get(`/api/student/submissions/${studentId}`)
       .then((response) => {
         setStudent(response.data);
         setEvaluate({
@@ -50,10 +50,10 @@ const SubmissionView = () => {
 
     const requestMethod = isCompleted ? "put" : "post";
     const requestUrl = isCompleted
-      ? `http://localhost:5000/api/student/editmarks/${studentId}`
-      : `http://localhost:5000/api/student/evaluation/${studentId}`;
+      ? `/api/student/editmarks/${studentId}`
+      : `/api/student/evaluation/${studentId}`;
 
-    axios({
+    axiosInstance({
       method: requestMethod,
       url: requestUrl,
       data: { Marks: evaluate.Marks, Comments: evaluate.Comments },

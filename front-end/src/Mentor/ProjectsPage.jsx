@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import MentorNavbar from '../components/MentorNavbar';
-import axios from 'axios';
+import axiosInstance from '../axiosInterceptor';
 import { useParams } from 'react-router-dom';
 
 const ProjectsPage = () => {
@@ -10,7 +10,7 @@ const ProjectsPage = () => {
     useEffect(() => {
         const fetchMentorData = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/mentors/${mentorId}`);
+                const response = await axiosInstance.get(`/api/mentors/${mentorId}`);
                 setMentor(response.data);
             } catch (error) {
                 console.error('Error fetching mentor data:', error);

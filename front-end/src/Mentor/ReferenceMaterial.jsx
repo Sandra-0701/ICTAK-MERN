@@ -3,6 +3,7 @@ import { Card, CardActions, CardContent, Button, Typography, Grid } from '@mui/m
 import axiosInstance from '../axiosInterceptor';
 import AddMaterial from './AddMaterial';
 import MentorNavbar from '../components/MentorNavbar';
+import Footer from '../components/Footer';
 
 const ReferenceMaterial = () => {
   const [materials, setMaterials] = useState([]);
@@ -71,6 +72,7 @@ const ReferenceMaterial = () => {
           ))}
         </Grid>
       </div>
+      <Footer/>
     </>
   );
 };

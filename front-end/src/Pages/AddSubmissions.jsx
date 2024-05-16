@@ -1,18 +1,16 @@
 import React, { useState } from "react";
-import axios from "axios";
+import Footer from '../components/Footer'
 import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import {
   Container,
   Grid,
   Typography,
-  Breadcrumbs,
-  Link,
   Button,
-  Box,
   MenuItem,
 } from "@mui/material";
 import Navbar from "../components/Navbar";
+import axiosInstance from "../axiosInterceptor";
 
 const AddSubmissions = () => {
   const navigate = useNavigate();
@@ -90,16 +88,11 @@ const AddSubmissions = () => {
       return;
     }
 
-    axios
-      .post("http://localhost:5000/api/student/newsubmission", {
-        Name: submission.Name,
-        Batch: submission.Batch,
-        Email: submission.Email,
-        SubmissionLink: submission.SubmissionLink,
-      })
+    axiosInstance
+      .post("/api/student/newsubmission", submission)
       .then((res) => {
         alert(res.data.message);
-        // navigate('/submissions');
+        navigate('/login'); // Navigate to the login page after successful submission
       })
       .catch((err) => {
         console.error("Error:", err);
@@ -115,31 +108,19 @@ const AddSubmissions = () => {
         style={{
           margin: "0 auto",
           width: "50%",
-          // border: "1px solid #ccc",
-          // borderRadius: "5px",
-          // padding: "20px",
           backgroundColor: '#f5f5f5',
           borderRadius: '8px',
           padding: '32px',
           boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
         }}
       >
-         {/* <Box
-                sx={{
-                  backgroundColor: '#f5f5f5',
-                  borderRadius: '8px',
-                  padding: '32px',
-                  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-                }}
-              > */}
-        <Typography variant="h4" gutterBottom style={{  color: 'black', height: '50px', borderRadius: '5px', paddingTop: '5px', textAlign:"center" }} >
+        <Typography variant="h4" gutterBottom style={{ color: 'black', height: '50px', borderRadius: '5px', paddingTop: '5px', textAlign:"center" }}>
           ADD STUDENT SUBMISSION
         </Typography>
         <br></br>
         <form>
           <Grid container spacing={2}>
             <Grid item xs={12}>
-           
               <TextField
                 label="Name"
                 variant="outlined"
@@ -205,12 +186,11 @@ const AddSubmissions = () => {
               >
                 SUBMIT
               </Button>
-             
             </Grid>
           </Grid>
         </form>
-     
       </div>
+      <Footer/>
     </>
   );
 };

@@ -3,10 +3,10 @@ import { AuthContext } from '../AuthContext';
 import { Container, Grid, Typography, TextField, Button, CircularProgress, InputAdornment, Box } from '@mui/material';
 import Navbar from '../components/Navbar';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import Footer from '../components/Footer';
 import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
+import axiosInstance from '../axiosInterceptor';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -41,7 +41,7 @@ const Login = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', {
+      const response = await axiosInstance.post('/api/auth/login', {
         Email: email,
         Password: password,
       });

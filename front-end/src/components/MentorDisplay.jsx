@@ -6,10 +6,10 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import axios from "axios";
 import { Button, Typography } from "@mui/material";
 import AdminForm from "./AdminForm";
-
+import axiosInstance from "../axiosInterceptor";
+import '../style/MentorDisplay.css'; // Import CSS file for styling
 
 const MentorDisplay = () => {
   const [mentor, setMentor] = useState([]);
@@ -17,26 +17,19 @@ const MentorDisplay = () => {
   const [singleVal, setSingleVal] = useState([]);
   const [topics, setTopics] = useState([]);
 
-  //get employees
-
   useEffect(() => {
-    axios.get("http://localhost:5000/api/mentors").then((res) => {
-      console.log(res.data);
+    axiosInstance.get("/api/mentors").then((res) => {
       setMentor(res.data);
     });
 
-    axios.get("http://localhost:5000/api/project/topics").then((res) => {
-      console.log(res.data);
+    axiosInstance.get("/api/project/topics").then((res) => {
       setTopics(res.data);
     });
   }, []);
-   
-
-  //delete employee
 
   const handleDelete = (id) => {
-    axios
-      .delete(`http://localhost:5000/api/remove/${id}`)
+    axiosInstance
+      .delete(`/api/remove/${id}`)
       .then((response) => {
         alert(response.data.message);
         setMentor((prevMentor) =>
@@ -49,64 +42,33 @@ const MentorDisplay = () => {
   };
 
   const updateVal = (item) => {
-    console.log(item);
     setUp(true);
-    setSingleVal(item); // Set singleVal state with the mentor data
+    setSingleVal(item);
   };
 
   let FinalJSX = (
-    <div>
-      <br />
+    <div className="mentor-display-container">
       <Typography
         variant="h4"
-        style={{
-          //  marginLeft: '25%',
-          textAlign: "center",
-          color: "darkblue",
-          fontFamily: "Times New Roman",
-          textDecoration: "underline",
-        }}
+        className="mentor-display-heading"
       >
         MENTOR INFO
       </Typography>
-      <br />
-      <TableContainer component={Paper} style={{ alignContent: "center" }}>
-        <Table
-          sx={{ minWidth: 650 }}
-          aria-label="simple table"
-          style={{
-            width: "1000px",
-            marginLeft: "280px",
-            border: "1px solid blue",
-          }}
-        >
+      <TableContainer component={Paper} className="table-container">
+        <Table aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell style={{ backgroundColor: "lightblue" }}>
-                Name
-              </TableCell>
-              <TableCell style={{ backgroundColor: "lightblue" }}>
-                Email
-              </TableCell>
-              <TableCell style={{ backgroundColor: "lightblue" }}>
-                Phone Number
-              </TableCell>
-              
-              <TableCell style={{ backgroundColor: "lightblue" }}>
-                Project Topic
-              </TableCell>
-              <TableCell style={{ backgroundColor: "lightblue" }}></TableCell>
-              <TableCell style={{ backgroundColor: "lightblue" }}></TableCell>
+              <TableCell>Name</TableCell>
+              <TableCell>Email</TableCell>
+              <TableCell>Phone Number</TableCell>
+              <TableCell>Project Topic</TableCell>
+              <TableCell></TableCell>
+              <TableCell></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {mentor.map((item, index) => (
-              <TableRow
-                style={{
-                  backgroundColor: index % 2 === 0 ? "#f0f0f0" : "inherit",
-                }}
-                key={index}
-              >
+              <TableRow key={index}>
                 <TableCell>{item.Name}</TableCell>
                 <TableCell>{item.Email}</TableCell>
                 <TableCell>{item.PhoneNumber}</TableCell>
@@ -117,7 +79,7 @@ const MentorDisplay = () => {
                 </TableCell>
                 <TableCell>
                   <Button
-                    style={{ backgroundColor: "lightblue", color: "black" }}
+                    className="update-button"
                     onClick={() => updateVal(item)}
                   >
                     Update
@@ -125,7 +87,7 @@ const MentorDisplay = () => {
                 </TableCell>
                 <TableCell>
                   <Button
-                    style={{ backgroundColor: "pink", color: "black" }}
+                    className="delete-button"
                     onClick={() => handleDelete(item._id)}
                   >
                     Delete

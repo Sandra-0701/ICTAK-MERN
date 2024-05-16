@@ -7,17 +7,17 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Button, Typography, TextField, Select, MenuItem, InputLabel } from "@mui/material";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import MentorNavbar from "../components/MentorNavbar";
+import axiosInstance from "../axiosInterceptor";
 
 const SubmissionList = () => {
   const [sub, setSubmission] = useState([]);
   const [searchBatch, setSearchBatch] = useState("");
 
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/api/student/submissions")
+    axiosInstance
+      .get("/api/student/submissions")
       .then((res) => {
         setSubmission(res.data);
       })
@@ -31,8 +31,8 @@ const SubmissionList = () => {
   };
 
   const handleDelete = (id) => {
-    axios
-      .delete(`http://localhost:5000/api/student/removesubmission/${id}`)
+    axiosInstance
+      .delete(`/api/student/removesubmission/${id}`)
       .then((response) => {
         alert(response.data.message);
         setSubmission((prevSubmission) =>
